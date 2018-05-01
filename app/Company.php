@@ -12,4 +12,9 @@ class Company extends Model
     	'descripton',
     	'user_id',
     ]
+
+    public function users(){
+        return $this->belongsTo(App\Model\User);//A task belongs to a user.
+    }
+
 }

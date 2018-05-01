@@ -14,4 +14,12 @@ class Project extends Model
 		'user_id',
 		'days',
 	]
+
+	public function users(){
+        return $this->belongsTo(App\Model\User);//A task belongs to a user.
+    }
+
+    public function companies(){
+        return $this->belongsTo(App\Model\Company);
+    }
 }
