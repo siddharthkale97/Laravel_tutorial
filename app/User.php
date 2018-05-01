@@ -34,19 +34,24 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function tasks(){
-        return $this->hasMany(App\Model\Task);//defining relationships, a user can have many tasks.
-    }
-
     public function comments(){
-        return $this->hasMany(App\Model\Comment);
+        return $this->hasMany('App\Comment');
     }
 
      public function companies(){
-        return $this->hasMany(App\Model\Company);
+        return $this->hasMany('App\Company');
     }
 
-    public function roles(){
-        return $this->belongsTo(App\Model\Role);//A user can have only one role.
+    public function role(){
+        return $this->belongsTo('App\Role');//A user can have only one role.
     }
+
+    public function tasks(){
+        return $this->belongsToMany('App\Task');//A user belongs to many task.
+    }
+
+    public function projects(){
+        return $this->belongsToMany('App\Projects');//A user belongs to many projects.
+    }
+
 }

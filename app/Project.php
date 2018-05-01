@@ -16,10 +16,10 @@ class Project extends Model
 	]
 
 	public function users(){
-        return $this->belongsTo(App\Model\User);//A task belongs to a user.
+        return $this->belongsToMany('App\User');//A task belongs to a user.
     }
 
-    public function companies(){
-        return $this->belongsTo(App\Model\Company);
+    public function company(){
+        return $this->belongsTo('App\Company');
     }
 }
