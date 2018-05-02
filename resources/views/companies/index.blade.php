@@ -5,7 +5,7 @@
 <div class="col-md-6 col-lg-6 col-md-offset-3 col-md-offset-3">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h3 class="panel-title">Companies</h3>
+      <h3 class="panel-title">Companies <a class="btn btn-primary pull-right btn-sm" href="/companies/create">Create new Company</a> </h3>
     </div>
     <div class="panel-body">
 
