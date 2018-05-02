@@ -14,7 +14,7 @@ class Task extends Model
      	'days',
      	'hours',
      	'company_id',
-    ]
+    ];
 
     public function project(){
         return $this->belongsTo('App\Project');

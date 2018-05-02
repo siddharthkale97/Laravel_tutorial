@@ -11,10 +11,14 @@ class Company extends Model
     	'name',
     	'descripton',
     	'user_id',
-    ]
+    ];
 
     public function user(){
         return $this->belongsTo('App\User');//A task belongs to a user.
+    }
+
+    public function projects(){
+      return $this->hasMany('App\Project');
     }
 
 }

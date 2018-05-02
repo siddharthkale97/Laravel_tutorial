@@ -13,7 +13,7 @@ class Project extends Model
 		'company_id',
 		'user_id',
 		'days',
-	]
+	];
 
 	public function users(){
         return $this->belongsToMany('App\User');//A task belongs to a user.
