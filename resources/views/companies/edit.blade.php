@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<div class="col-md-9 col-lg-9 col-sm-9 pull-left">
+<div class="col-md-9 col-lg-9 col-sm-9 pull-left" style="background-color:white;">
 
+  <h1>Update Company</h1>
   <div class="row col-md-12 col-lg-12 col-sm-12" style="background-color:white; margin:10px;">
     <form class="" method="post" action="{{ route('companies.update', [$company->id]) }}" >
       {{ csrf_field() }}

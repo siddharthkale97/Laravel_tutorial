@@ -14,7 +14,7 @@ class Company extends Model
     ];
 
     public function user(){
-        return $this->belongsTo('App\User');//A task belongs to a user.
+        return $this->belongsTo('App\User');//A Company belongs to a user.
     }
 
     public function projects(){

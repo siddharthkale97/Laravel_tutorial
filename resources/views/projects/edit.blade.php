@@ -2,9 +2,12 @@
 @section('content')
 <div class="col-md-9 col-lg-9 col-sm-9 pull-left" style="background-color:white;">
   <h1>Create New Company</h1>
+
   <div class="row col-md-12 col-lg-12 col-sm-12" style="background-color:white; margin:10px;">
-    <form class="" method="post" action="{{ route('companies.store') }}" >
+    <form class="" method="post" action="{{ route('companies.update', [$company->id]) }}" >
       {{ csrf_field() }}
+        <input type="hidden" name="_method" value="put">
+
         <div class="form-group">
             <label for="company-name">Name <span class="required">*</span></label>
             <input
@@ -13,8 +16,10 @@
               id="company-name"
               required
               spellcheck="false"
-              class="form-control">
+              class="form-control"
+              value="{{ $company->name }}">
         </div>
+
         <div class="form-group">
             <label for="company-content">Description</label>
             <textarea
@@ -25,7 +30,7 @@
               rows="5"
               spellcheck="false"
               class="form-control autosize-target text-left">
-            </textarea>
+            {{ $company->description }}</textarea>
         </div>
 
         <div class="form-group">
@@ -45,6 +50,7 @@
     <div class="sidebar-module">
       <h4>Actions</h4>
       <ol class="list-unstyled">
+        <li><a href="/companies/{{ $company->id }}">{{ $company->name }}</a></li>
         <li><a href="/companies">All Companies</a></li>
       </ol>
     </div>

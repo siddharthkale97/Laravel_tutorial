@@ -1,26 +1,35 @@
 @extends('layouts.app')
 @section('content')
 <div class="col-md-9 col-lg-9 col-sm-9 pull-left" style="background-color:white;">
-  <h1>Create New Company</h1>
+  <h1>Create New Project</h1>
+
   <div class="row col-md-12 col-lg-12 col-sm-12" style="background-color:white; margin:10px;">
-    <form class="" method="post" action="{{ route('companies.store') }}" >
+    <form class="" method="post" action="{{ route('projects.store') }}" >
       {{ csrf_field() }}
         <div class="form-group">
-            <label for="company-name">Name <span class="required">*</span></label>
+            <label for="project-name">Name <span class="required">*</span></label>
             <input
               name="name"
               placeholder="Enter Name"
-              id="company-name"
+              id="project-name"
               required
               spellcheck="false"
               class="form-control">
         </div>
+
         <div class="form-group">
-            <label for="company-content">Description</label>
+            <input
+              name="project_id"
+              type="hidden"
+              value="{{ $company_id }}">
+        </div>
+
+        <div class="form-group">
+            <label for="project-content">Description</label>
             <textarea
               placeholder="Enter Description"
               style="resize: vertical"
-              id="company-content"
+              id="project-content"
               name="description"
               rows="5"
               spellcheck="false"
@@ -45,7 +54,7 @@
     <div class="sidebar-module">
       <h4>Actions</h4>
       <ol class="list-unstyled">
-        <li><a href="/companies">All Companies</a></li>
+        <li><a href="/projects">All Projects</a></li>
       </ol>
     </div>
 
