@@ -91,7 +91,7 @@
       <div class="row">
         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
           <form id="delete-form"
-           action="{{ route('projects.adduser') }}"
+           action="projects/adduser"
             method="post">
               {{ csrf_field() }}
           <div class="input-group">
