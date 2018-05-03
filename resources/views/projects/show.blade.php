@@ -16,7 +16,7 @@
         <form class="" method="post" action="{{ route('comments.store') }}" >
           {{ csrf_field() }}
 
-          <input type="hidden" name="commentable_type" value="Project">
+          <input type="hidden" name="commentable_type" value="App\Project">
           <input type="hidden" name="commentable_id" value="{{ $project->id }}">
 
           <div class="form-group">
@@ -48,17 +48,10 @@
           <div class="form-group">
             <input type="submit" class="btn btn-success" value="Submit">
           </div>
-
         </form>
       </div>
-      {{--@foreach($project->projects as $project)
-      <div class="col-lg-4">
-        <h2>{{ $project->name }}</h2>
-        <p>{{ $project->description }}</p>
-        <p><a class="btn btn-primary" href="/projects/{{ $project->id }}" role="button">View Project »</a></p>
-      </div>
-    @endforeach--}}
     </div>
+    @include('partials.comments')
 </div>
 <div class="col-sm-3 col-md-3 col-lg-3 pull-right">
     <!-- <div class="sidebar-module sidebar-module-inset">

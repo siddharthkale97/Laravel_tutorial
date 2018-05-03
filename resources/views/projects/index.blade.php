@@ -8,18 +8,18 @@
 
       <h3 class="panel-title"></h3>
 
-      Companies <a class="
+      Projects <a class="
       btn btn-primary
        pull-right btn-sm"
-        href="/companies/create">
-        Create new</a>
+        href="/projects/create">
+        Create new Project</a>
 
     </div>
     <div class="panel-body">
 
       <ul class="list-group">
-        @foreach($companies as $company)
-        <li class="list-group-item"><a href="/companies/{{ $company->id }}"> {{ $company->name }}</a> </li>
+        @foreach($projects as $project)
+        <li class="list-group-item"><a href="/projects/{{ $project->id }}"> {{ $project->name }}</a> </li>
         @endforeach
       </ul>
 
