@@ -14,15 +14,16 @@
 Route::get('/', function(){
     return view('welcome');
 });
-Route::get('/home','HomeController@index');
+Route::get('/home','HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::resource('/companies', 'CompaniesController');
+Route::middleware(['auth'])->group(function(){//middleware to make user guest user can't access these pages
+  Route::resource('/companies', 'CompaniesController');
+  Route::get('/projects/create/{company_id?}', 'ProjectsController@create');
+  Route::resource('/projects', 'ProjectsController');
+  Route::resource('/roles', 'RolesController');
+  Route::resource('/tasks', 'TasksController');
+  Route::resource('/users', 'UsersController');
 
-Route::get('/projects/create/{company_id?}', 'ProjectsController@create');
-
-Route::resource('/projects', 'ProjectsController');
-Route::resource('/roles', 'RolesController');
-Route::resource('/tasks', 'TasksController');
-Route::resource('/users', 'UsersController');
+});

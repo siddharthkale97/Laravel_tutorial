@@ -19,7 +19,7 @@
 
         <div class="form-group">
             <input
-              name="project_id"
+              name="company_id"
               type="hidden"
               value="{{ $company_id }}">
         </div>
