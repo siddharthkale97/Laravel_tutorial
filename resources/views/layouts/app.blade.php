@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -46,9 +46,25 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li><a href="{{ route('companies.index') }}">My Companies</a></li>
-                            <li><a href="{{ route('projects.index') }}">Projects</a></li>
-                            <li><a href="{{ route('tasks.index') }}">Tasks</a></li>
+                            <li><a href="{{ route('companies.index') }}"><i class="fas fa-building"></i> My Companies</a></li>
+                            <li><a href="{{ route('projects.index') }}"><i class="fas fa-briefcase"></i> Projects</a></li>
+                            <li><a href="{{ route('tasks.index') }}"><i class="fas fa-tasks"></i> Tasks</a></li>
+
+                            @if(Auth::user()->roll_id == 1)
+                              <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                      Admin <span class="caret"></span>
+                                  </a>
+
+                                  <ul class="dropdown-menu">
+                                    <li><a href="{{ route('companies.index') }}"><i class="fas fa-building"></i> All Companies</a></li>
+                                    <li><a href="{{ route('projects.index') }}"><i class="fas fa-briefcase"></i> All Projects</a></li>
+                                    <li><a href="{{ route('tasks.index') }}"><i class="fas fa-tasks"></i> All Tasks</a></li>
+                                    <li><a href="{{ route('users.index') }}"><i class="fas fa-user"></i> All Users</a></li>
+                                    <li><a href="{{ route('roles.index') }}"><i class="fas fa-check-circle"></i> All Roles</a></li>
+                                  </ul>
+                              </li>
+                            @endif
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>

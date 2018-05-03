@@ -10,7 +10,8 @@
 
     <!-- Example row of columns -->
     <div class="row" style="background-color:white; margin:10px;">
-      <a href="/projects/create" class="pull-right btn btn-default btn-sm">Add new Project</a><br>
+      <br>
+      @include('partials.comments')<!-- comments apper here -->
       <br>
       <div class="row container-fluid">
         <form class="" method="post" action="{{ route('comments.store') }}" >
@@ -51,7 +52,7 @@
         </form>
       </div>
     </div>
-    @include('partials.comments')
+
 </div>
 <div class="col-sm-3 col-md-3 col-lg-3 pull-right">
     <!-- <div class="sidebar-module sidebar-module-inset">
@@ -75,24 +76,39 @@
               document.getElementById('delete-form').submit();
             }
           ">Delete</a>
+          <form id="delete-form"
+           action="{{ route('projects.destroy', [$project->id]) }}"
+            method="post"
+            style="Display: none">
+            <input type="hidden" name="_method" value="delete">
+              {{ csrf_field() }}
+          </form>
         </li>
         @endif
-        <form id="delete-form"
-         action="{{ route('projects.destroy', [$project->id]) }}"
-          method="post"
-          style="Display: none">
-          <input type="hidden" name="_method" value="delete">
-            {{ csrf_field() }}
-        </form>
         <!-- <li><a href="#">Add a new Member</a></li> -->
-      </ol>
-    </div>
-
-    <!-- <div class="sidebar-module">
-      <h4>Users</h4>
+      </ol><br><hr>
+      <h4>Add members to project</h4>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+          <form id="delete-form"
+           action="{{ route('projects.adduser') }}"
+            method="post">
+              {{ csrf_field() }}
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Email">
+              <span class="input-group-btn">
+              <button class="btn btn-primary" type="button">Add</button>
+            </span>
+          </div><!-- /input-group -->
+          </form>
+        </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
+      <br><hr>
+      <h4>Team members</h4>
       <ol class="list-unstyled">
         <li><a href="#">March 2014</a></li>
       </ol>
-    </div> -->
+
+    </div>
 </div>
 @endsection

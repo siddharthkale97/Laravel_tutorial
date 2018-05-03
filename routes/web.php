@@ -21,6 +21,7 @@ Auth::routes();
 Route::middleware(['auth'])->group(function(){//middleware to make user guest user can't access these pages
   Route::resource('/companies', 'CompaniesController');
   Route::get('/projects/create/{company_id?}', 'ProjectsController@create');
+  Route::post('/projects/adduser/{project_id?}', 'ProjectsController@adduser')->name('projects.adduser');
   Route::resource('/projects', 'ProjectsController');
   Route::resource('/roles', 'RolesController');
   Route::resource('/tasks', 'TasksController');
