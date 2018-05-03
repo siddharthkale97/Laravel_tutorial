@@ -95,7 +95,8 @@
             method="post">
               {{ csrf_field() }}
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Email">
+            <input type="text" class="form-control" name="email" placeholder="Email">
+            <input type="hidden" class="form-control"name="project_id" value="{{ $project->id }}">
               <span class="input-group-btn">
               <button class="btn btn-primary" type="button">Add</button>
             </span>
@@ -106,7 +107,9 @@
       <br><hr>
       <h4>Team members</h4>
       <ol class="list-unstyled">
-        <li><a href="#">March 2014</a></li>
+        @foreach($project->users as $user)
+        <li><a href="#">{{ $user->email }}</a></li>
+        @endforeach
       </ol>
 
     </div>
