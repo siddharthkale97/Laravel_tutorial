@@ -25,5 +25,6 @@ Route::middleware(['auth'])->group(function(){//middleware to make user guest us
   Route::resource('/roles', 'RolesController');
   Route::resource('/tasks', 'TasksController');
   Route::resource('/users', 'UsersController');
+  Route::resource('/comments', 'CommentsController');
 
 });
