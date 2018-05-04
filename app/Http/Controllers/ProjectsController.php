@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Company;
+use App\ProjectUser;
 
 class ProjectsController extends Controller
 {
@@ -27,18 +28,27 @@ class ProjectsController extends Controller
      public function adduser(Request $request){
 
         $project = Project::find($request->input('project_id'));
+
         if (Auth::user()->id == $project->user_id) {
 
-          $user = User::where('email', $request->input('email'))->get();
+          $user = User::where('email', $request->input('email'))->first();
+          $projectUser = ProjectUser::where('user_id', $user->id)
+                                    ->where('project_id', $project->id)
+          ->first();
+          if ($projectUser) {
+            return redirect()->route('projects.show', ['project' => $project->id])
+            ->with('errors', 'Member already exists!!');
+          }
+
           if ($user && $project) {
             $project->users()->attach($user->id);
-            return redirect()->route('project.show', ['project' => $project->id])
+            return redirect()->route('projects.show', ['project' => $project->id])
             ->with('success', 'Member successfully added');
 
           }
         }
 
-        return redirect()->route('project.show', ['project' => $project->id])
+        return redirect()->route('projects.show', ['project' => $project->id])
         ->with('errors', 'Error adding member!!');
      }
 

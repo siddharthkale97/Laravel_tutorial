@@ -90,15 +90,15 @@
       <h4>Add members to project</h4>
       <div class="row">
         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-          <form id="delete-form"
-           action="projects/adduser"
+          <form id="adduser-form"
+           action="/projects/adduser"
             method="post">
               {{ csrf_field() }}
           <div class="input-group">
             <input type="text" class="form-control" name="email" placeholder="Email">
             <input type="hidden" class="form-control"name="project_id" value="{{ $project->id }}">
               <span class="input-group-btn">
-              <button class="btn btn-primary" type="button">Add</button>
+              <button class="btn btn-primary" type="submit">Add</button>
             </span>
           </div><!-- /input-group -->
           </form>
